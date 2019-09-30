@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.myproject.mapper.CoffeeMapper">
+
+<insert id="insertCoffee" parameterType="java.util.List">
+insert into coffee_info(img_address, coffee_name, coffee_size, kcal, sat_fat, protein, sodium, sugars, caffeine, category) 
+values
+<foreach collection="list" index="index" item="result_list" separator=" , ">
+(#{result_list.img_address}, #{result_list.coffee_name}, #{result_list.coffee_size},#{result_list.kcal},#{result_list.sat_fat}, #{result_list.protein}, #{result_list.sodium}, #{result_list.sugars}, #{result_list.caffeine}, #{result_list.category})
+</foreach>
+</insert>
+<select id="selectCoffeeAll" resultType="starbucksCoffeeDTO">
+select * from coffee_info
+</select>
+<select id="selectCoffee" parameterType="String" resultType="starbucksCoffeeDTO">
+select * from coffee_info where category=#{value}
+</select>
+
+</mapper>
