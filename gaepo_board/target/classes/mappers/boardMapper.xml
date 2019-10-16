@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+    PUBLIC "-//mybatis.org/DTD Mapper 3.0//EN"
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.sjh.web.board.boardMapper">
+	<select id="getBoardList" resultType="com.sjh.web.board.model.BoardVO">
+	select bid, title, content, tag, view_cnt, reg_id, reg_dt, edit_dt, cate_cd from tbl_board
+	</select>
+	
+	<select id="getBoardContent" resultType="com.sjh.web.board.model.BoardVO">
+	select bid, title, content, tag, view_cnt, reg_id, reg_dt, edit_dt, cate_cd from tbl_board where bid=#{bid}
+	</select>
+	
+	<insert id="insertBoard" parameterType="com.sjh.web.board.model.BoardVO">
+	insert into tbl_board(title, content, tag, view_cnt, reg_id, reg_dt, edit_dt, cate_cd)
+	values(#{title}, #{content},#{tag},0,#{reg_id},now(),now(), #{cate_cd})
+	</insert>
+	
+	<update id="updateBoard" parameterType="com.sjh.web.board.model.BoardVO">
+	update tbl_board set title, content, tag, edit_dt, cate_cd where bid=#{bid}
+	</update>
+	
+	<delete id="deleteBoard" parameterType="int">
+	delete from tbl_board where bid=#{bid}
+	</delete>
+	
+	<update id="updateViewCnt" parameterType="com.sjh.web.board.model.BoardVO">
+	update tbl_board set view_cnt=view_cnt+1 where bid=#{bid}
+	</update>
+	
+	
+</mapper>

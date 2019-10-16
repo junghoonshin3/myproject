@@ -9,4 +9,5 @@ public interface StarbucksCoffeeService {
 	public int insertCoffee(List<StarbucksCoffeeDTO> list) throws Exception;
 	public List<StarbucksCoffeeDTO> selectCoffeeAll() throws Exception;
 	public List<StarbucksCoffeeDTO> selectCoffee(String category) throws Exception;
+	
 }
