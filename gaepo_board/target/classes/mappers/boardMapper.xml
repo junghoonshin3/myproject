@@ -17,7 +17,7 @@
 	</insert>
 	
 	<update id="updateBoard" parameterType="com.sjh.web.board.model.BoardVO">
-	update tbl_board set title, content, tag, edit_dt, cate_cd where bid=#{bid}
+	update tbl_board set title=#{title}, content=#{content}, tag=#{tag}, edit_dt=now(), cate_cd=#{cate_cd} where bid=#{bid}
 	</update>
 	
 	<delete id="deleteBoard" parameterType="int">

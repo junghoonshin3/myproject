@@ -27,5 +27,10 @@
 </div>
 
 </div>
+<!-- 커스텀js -->
+<script type="text/javascript" src="resources/js/top.js" charset="utf-8"></script>
+<script type="text/javascript" src="resources/js/image.js" charset="utf-8"></script>
+<script type="text/javascript" src="resources/js/left.js" charset="utf-8"></script>
+<script type="text/javascript" src="resources/js/board.js" charset="utf-8"></script>
 </body>
 </html>

@@ -18,7 +18,8 @@
           <h1 class="page-header title">잡담 게시판</h1>
 			
           <div class="row placeholders myscorll" id="content">
-          	<table class="table table-hover">
+         <div class="container">
+         <table class="table table-hover">
 		<colgroup>
 			<col style="width:5%;" />
 			<col style="width:auto;"/>
@@ -59,10 +60,12 @@
        </c:choose>
       </tbody>
       </table>
+     
      <div>
      <button type="button" class="btn btn-sm btn-primary" id="btnWriteForm">글쓰기</button>
      
      </div>     	
+          </div>
           </div>
 
          
