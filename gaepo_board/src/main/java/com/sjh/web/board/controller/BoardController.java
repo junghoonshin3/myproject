@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
+import com.sjh.common.Pagination;
 import com.sjh.web.board.model.BoardVO;
 import com.sjh.web.board.service.BoardService;
 
@@ -23,13 +24,23 @@ public class BoardController {
 	}
 	
 	@RequestMapping("getBoardList")
-	public String talk(Model model) throws Exception {
-		model.addAttribute("boardList", boardService.getBoardList());
+	public String talk(Model model
+			, @RequestParam(required=false, defaultValue="1")int page
+			, @RequestParam(required=false, defaultValue="1")int range) throws Exception {
+		//전체 게시물 수
+		int listCnt=boardService.getBoardListCnt();
+		//객체 생성 및 페이지 정보 셋팅
+		Pagination pagination=new Pagination();
+		pagination.pageInfo(page, range, listCnt);
+		model.addAttribute("pagination", pagination);
+		model.addAttribute("boardList", boardService.getBoardList(pagination));
+		
 		return "/board/board";
 	}
 	
 	@RequestMapping("boardForm")
-	public String boardForm() {
+	public String boardForm(Model model) {
+		model.addAttribute("boardVO", new BoardVO());
 		return "/board/boardForm";
 	}
 	
@@ -49,6 +60,7 @@ public class BoardController {
 		model.addAttribute("boardContent", boardService.getBoardContent(bid));
 		return "/board/boardContent";
 	}
+	
 	@RequestMapping(value="editForm", method=RequestMethod.GET)
 	public String editForm(@RequestParam("bid")int bid, @RequestParam("mode")String mode, Model model) throws Exception {
 		BoardVO boardContent=boardService.getBoardContent(bid);

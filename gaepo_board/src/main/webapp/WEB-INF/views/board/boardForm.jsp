@@ -71,6 +71,9 @@ $(document).ready(function(){
 		$("#reg_id").val('<c:out value="${boardContent.reg_id}"/>');
 		$("#title").val('<c:out value="${boardContent.title}"/>');		
 		$("#tag").val('<c:out value="${boardContent.tag}"/>');
+	}else{
+		$("#reg_id").val('세션아이디값 넣을거임');
+		$("#reg_id").prop('readonly', true);
 	}
 });
 </script>

@@ -50,32 +50,32 @@ public class BoardDAOTest {
 	@Inject
 	private BoardDAO boardDAO;
 
-	@Test@Ignore
-	public void testGetBoardList() throws Exception {
-
-		List<BoardVO> boardList = boardDAO.getBoardList();
-
-		logger.info("\n Board List \n ");
-
-		if(boardList.size() > 0) {
-
-			for(BoardVO list : boardList) {
-
-				logger.info(list.getTitle());
-
-			}
-
-		} else {
-
-			logger.info("데이터가 없습니다.");
-
-		}
-
-	}
+//	@Test @Ignore
+//	public void testGetBoardList() throws Exception {
+//
+//		//List<BoardVO> boardList = boardDAO.getBoardList();
+//
+//		logger.info("\n Board List \n ");
+//
+//		if(boardList.size() > 0) {
+//
+//			for(BoardVO list : boardList) {
+//
+//				logger.info(list.getTitle());
+//
+//			}
+//
+//		} else {
+//
+//			logger.info("데이터가 없습니다.");
+//
+//		}
+//
+//	}
 
 	
 
-	@Test
+	@Test @Ignore
 
 	public void testGetBoardContent() throws Exception {
 
@@ -111,19 +111,26 @@ public class BoardDAOTest {
 
 	
 
-	@Test @Ignore
+	@Test
 
 	public void testInsertBoard() throws Exception {
 
 		BoardVO boardVO = new BoardVO();
-
-		boardVO.setTitle("첫번째 게시물 입니다.");
-
-		boardVO.setContent("첫번째 게시물입니다.");
+//
+//		boardVO.setTitle("첫번째 게시물 입니다.");
+//
+//		boardVO.setContent("첫번째 게시물입니다.");
 
 		boardVO.setTag("1");
 
 		boardVO.setReg_id("1");
+		for( int i = 1; i < 1234 ; i++) {
+
+		    boardVO.setTitle(i + " 번째 게시물 입니다.");
+		    	
+		    boardVO.setContent(i + " 번째 게시물 입니다.");
+		    boardVO.setCate_cd("12");
+
 
 		
 
@@ -140,6 +147,7 @@ public class BoardDAOTest {
 			logger.info("\n 게시물 등록 실패");
 
 		}
+	}
 
 	}
 

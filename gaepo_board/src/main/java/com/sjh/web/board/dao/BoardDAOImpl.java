@@ -5,15 +5,17 @@ import javax.inject.Inject;
 
 import org.apache.ibatis.session.SqlSession;
 import org.springframework.stereotype.Repository;
+import org.springframework.transaction.annotation.Transactional;
 
+import com.sjh.common.Pagination;
 import com.sjh.web.board.model.BoardVO;
 @Repository
 public class BoardDAOImpl implements BoardDAO{
 	@Inject
 	private SqlSession sqlSession;
 	@Override
-	public List<BoardVO> getBoardList() throws Exception {
-		return sqlSession.selectList("com.sjh.web.board.boardMapper.getBoardList");
+	public List<BoardVO> getBoardList(Pagination pagination) throws Exception {
+		return sqlSession.selectList("com.sjh.web.board.boardMapper.getBoardList", pagination);
 	}
 
 	@Override
@@ -46,4 +48,10 @@ public class BoardDAOImpl implements BoardDAO{
 		return sqlSession.update("com.sjh.web.board.boardMapper.updateViewCnt", bid);
 	}
 
+	@Override
+	public int getBoardListCnt() throws Exception {
+			return sqlSession.selectOne("com.sjh.web.board.boardMapper.getBoardListCnt");
+	}
+	
+	
 }
